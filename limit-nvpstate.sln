@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "limit-nvpstate", "limit-nvpstate\limit-nvpstate.csproj", "{9FE0BD13-D64B-400A-8290-6C2C42E4756E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9FE0BD13-D64B-400A-8290-6C2C42E4756E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FE0BD13-D64B-400A-8290-6C2C42E4756E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FE0BD13-D64B-400A-8290-6C2C42E4756E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FE0BD13-D64B-400A-8290-6C2C42E4756E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {360AFE2C-E660-46BA-9186-ABA6F3BF172A}
+	EndGlobalSection
+EndGlobal
