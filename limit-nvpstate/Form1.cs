@@ -25,9 +25,7 @@ namespace limit_nvpstate {
         }
 
         private void removeProcess_Click(object sender, EventArgs e) {
-            if (processes.SelectedIndex > -1) {
-                processes.Items.RemoveAt(processes.SelectedIndex);
-            }
+            processes.Items.RemoveAt(processes.SelectedIndex);
         }
 
         private void eventHandler(object sender, EventArrivedEventArgs e) {
