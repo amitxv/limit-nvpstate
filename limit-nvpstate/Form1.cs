@@ -70,7 +70,7 @@ namespace limit_nvpstate {
             // repopulate backend array
             processListen.Clear();
             for (int i = 0; i < processes.Items.Count; i++) {
-                processListen.Add(processes.Items[i].ToString().Split('.')[0]);
+                processListen.Add(processes.Items[i].ToString().Replace(".exe", ""));
             }
         }
 
