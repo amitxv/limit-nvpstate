@@ -10,8 +10,8 @@ using System.Windows.Forms;
 namespace limit_nvpstate {
     public partial class limitnvpstate : Form {
 
-        public ArrayList processListen = new ArrayList();
-        public Process inspector = new Process();
+        private ArrayList processListen = new ArrayList();
+        private Process inspector = new Process();
 
         public limitnvpstate() {
             InitializeComponent();
