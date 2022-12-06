@@ -1,6 +1,6 @@
 # limit-nvpstate
 
-Limit P-States on NVIDIA GPUs when a user-defined list of processes are not running to forcefully reduce power consumption while idling
+Limit P-States on NVIDIA GPUs when a user-defined list of processes are NOT running to reduce power consumption
 
 Contact: <https://twitter.com/amitxv>
 
