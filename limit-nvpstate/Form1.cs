@@ -68,12 +68,10 @@ namespace limit_nvpstate {
         }
 
         private void limitPstate(bool enabled) {
-            string index = gpuIndex.SelectedItem.ToString().Split('-')[0].Replace(" ", "");
-
             if (enabled) {
-                inspector.StartInfo.Arguments = $"-setPStateLimit:{index},{pstateLimit.SelectedItem.ToString().Replace("P", "")}";
+                inspector.StartInfo.Arguments = $"-setPStateLimit:{gpuIndex.SelectedIndex},{pstateLimit.SelectedItem.ToString().Replace("P", "")}";
             } else {
-                inspector.StartInfo.Arguments = $"-setPStateLimit:{index},0";
+                inspector.StartInfo.Arguments = $"-setPStateLimit:{gpuIndex.SelectedIndex},0";
             }
             inspector.Start();
         }
@@ -95,10 +93,8 @@ namespace limit_nvpstate {
             ManagementObjectCollection gpuCollection = searcher.Get();
 
             // iterate through the collection of GPU objects
-            int index = 0;
             foreach (ManagementObject gpu in gpuCollection) {
-                gpuIndex.Items.Add($"{index} - {gpu["Name"]}");
-                index++;
+                gpuIndex.Items.Add($"{gpu["Name"]}");
             }
 
             if (!File.Exists("nvidiaInspector.exe")) {

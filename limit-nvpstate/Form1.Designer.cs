@@ -133,7 +133,7 @@
             this.groupBox3.Size = new System.Drawing.Size(198, 47);
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "GPU Index";
+            this.groupBox3.Text = "GPU";
             // 
             // gpuIndex
             // 
