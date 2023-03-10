@@ -139,11 +139,6 @@
             // 
             this.gpuIndex.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.gpuIndex.FormattingEnabled = true;
-            this.gpuIndex.Items.AddRange(new object[] {
-            "0",
-            "1",
-            "2",
-            "3"});
             this.gpuIndex.Location = new System.Drawing.Point(6, 19);
             this.gpuIndex.Name = "gpuIndex";
             this.gpuIndex.Size = new System.Drawing.Size(186, 21);

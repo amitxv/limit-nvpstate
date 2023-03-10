@@ -1,6 +1,5 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -9,9 +8,8 @@ using System.Windows.Forms;
 
 namespace limit_nvpstate {
     public partial class limitnvpstate : Form {
-
-        private ArrayList processListen = new ArrayList();
         private Process inspector = new Process();
+        private string version = "0.2.0";
 
         public limitnvpstate() {
             InitializeComponent();
@@ -20,7 +18,8 @@ namespace limit_nvpstate {
         private void addProcess_Click(object sender, EventArgs e) {
             OpenFileDialog ofd = new OpenFileDialog();
             if (ofd.ShowDialog() == DialogResult.OK) {
-                processes.Items.Add(Path.GetFileName(ofd.FileName));
+                string fileName = Path.GetFileName(ofd.FileName).Replace(".exe", "");
+                processes.Items.Add(fileName);
             }
         }
 
@@ -31,10 +30,10 @@ namespace limit_nvpstate {
         private void eventHandler(object sender, EventArrivedEventArgs e) {
             Process createdProcess = Process.GetProcessById((int)(uint)e.NewEvent.Properties["ProcessID"].Value);
 
-            if (processListen.Contains(createdProcess.ProcessName)) {
-                unlimitPstate(true);
+            if (processes.Items.Contains(createdProcess.ProcessName)) {
+                limitPstate(false);
                 createdProcess.WaitForExit();
-                unlimitPstate(false);
+                limitPstate(true);
             }
         }
 
@@ -66,19 +65,15 @@ namespace limit_nvpstate {
                     processes.Items.Add(i);
                 }
             }
-
-            // repopulate backend array
-            processListen.Clear();
-            for (int i = 0; i < processes.Items.Count; i++) {
-                processListen.Add(processes.Items[i].ToString().Replace(".exe", ""));
-            }
         }
 
-        private void unlimitPstate(bool enabled) {
+        private void limitPstate(bool enabled) {
+            string index = gpuIndex.SelectedItem.ToString().Split('-')[0].Replace(" ", "");
+
             if (enabled) {
-                inspector.StartInfo.Arguments = $"-setPStateLimit:{gpuIndex.SelectedItem},0";
+                inspector.StartInfo.Arguments = $"-setPStateLimit:{index},{pstateLimit.SelectedItem.ToString().Replace("P", "")}";
             } else {
-                inspector.StartInfo.Arguments = $"-setPStateLimit:{gpuIndex.SelectedItem},{pstateLimit.SelectedItem.ToString().Replace("P", "")}";
+                inspector.StartInfo.Arguments = $"-setPStateLimit:{index},0";
             }
             inspector.Start();
         }
@@ -93,6 +88,18 @@ namespace limit_nvpstate {
         }
 
         private void limitnvpstate_Load(object sender, EventArgs e) {
+            // create a new instance of the ManagementObjectSearcher class
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_VideoController");
+
+            // call the Get method of the ManagementObjectSearcher class to retrieve a collection of GPU objects
+            ManagementObjectCollection gpuCollection = searcher.Get();
+
+            // iterate through the collection of GPU objects
+            int index = 0;
+            foreach (ManagementObject gpu in gpuCollection) {
+                gpuIndex.Items.Add($"{index} - {gpu["Name"]}");
+                index++;
+            }
 
             if (!File.Exists("nvidiaInspector.exe")) {
                 MessageBox.Show("Inspector not found in current directory", "limit-nvpstate", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -109,9 +116,9 @@ namespace limit_nvpstate {
             startWatch.EventArrived += new EventArrivedEventHandler(eventHandler);
             startWatch.Start();
 
-            
+
             loadSettings(); // load settings when program starts
-            unlimitPstate(false); // limit pstates when program starts
+            limitPstate(true); // limit pstates when program starts
 
             if (startMinimizedToolStripMenuItem.Checked) {
                 this.WindowState = FormWindowState.Minimized;
@@ -150,7 +157,7 @@ namespace limit_nvpstate {
         }
 
         private void limitnvpstate_FormClosing(object sender, FormClosingEventArgs e) {
-            unlimitPstate(true);
+            limitPstate(false);
         }
 
         private void exitToolStripMenuItem1_Click(object sender, EventArgs e) {
@@ -158,11 +165,8 @@ namespace limit_nvpstate {
         }
 
         private void processes_SelectedIndexChanged(object sender, EventArgs e) {
-            if (processes.SelectedIndex > -1) {
-                removeProcess.Enabled= true;
-            } else {
-                removeProcess.Enabled= false;
-            }
+            // only enable the remove process button if a index is selected
+            removeProcess.Enabled = processes.SelectedIndex > -1;
         }
     }
 }
