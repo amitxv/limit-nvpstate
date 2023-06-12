@@ -1,0 +1,30 @@
+name: Create release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    env:
+      VCPKG_DEFAULT_TRIPLET: x64-windows
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up MSVC environment
+        uses: microsoft/setup-msbuild@v1
+
+      - name: Build executable
+        run: |
+          MSBuild.exe .\limit-nvpstate\limit-nvpstate.sln -p:Configuration=Release -p:Platform=x64
+
+      - name: Upload to release
+        uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        with:
+          files: ./limit-nvpstate/limit-nvpstate/bin/x64/Release/limit-nvpstate.exe
