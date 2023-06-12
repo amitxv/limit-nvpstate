@@ -24,12 +24,12 @@ jobs:
 
       - name: Create folder structure
         run: |
-          mkdir limit-nvpstate
-          move .\limit-nvpstate\limit-nvpstate\bin\x64\Release\limit-nvpstate.exe limit-nvpstate
-          move nvidiaInspector.exe limit-nvpstate
+          mkdir release\limit-nvpstate
+          move .\limit-nvpstate\limit-nvpstate\bin\x64\Release\limit-nvpstate.exe release\limit-nvpstate
+          move nvidiaInspector.exe release\limit-nvpstate
 
       - name: Zip limit-nvpstate
-        run: Compress-Archive -Path limit-nvpstate -DestinationPath limit-nvpstate.zip
+        run: Compress-Archive -Path release\limit-nvpstate -DestinationPath limit-nvpstate.zip
 
       - name: Upload to release
         uses: softprops/action-gh-release@v1
