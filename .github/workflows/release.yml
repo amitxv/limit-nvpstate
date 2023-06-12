@@ -22,9 +22,18 @@ jobs:
         run: |
           MSBuild.exe .\limit-nvpstate\limit-nvpstate.sln -p:Configuration=Release -p:Platform=x64
 
+      - name: Create folder structure
+        run: |
+          mkdir limit-nvpstate
+          move .\limit-nvpstate\limit-nvpstate\bin\x64\Release\limit-nvpstate.exe limit-nvpstate
+          move nvidiaInspector.exe limit-nvpstate
+
+      - name: Zip limit-nvpstate
+        run: Compress-Archive -Path limit-nvpstate -DestinationPath limit-nvpstate.zip
+
       - name: Upload to release
         uses: softprops/action-gh-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
-          files: ./limit-nvpstate/limit-nvpstate/bin/x64/Release/limit-nvpstate.exe
+          files: limit-nvpstate.zip
