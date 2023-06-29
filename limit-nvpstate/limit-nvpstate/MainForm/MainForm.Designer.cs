@@ -60,7 +60,7 @@
             this.applySettings.TabIndex = 2;
             this.applySettings.Text = "Apply";
             this.applySettings.UseVisualStyleBackColor = true;
-            this.applySettings.Click += new System.EventHandler(this.applySettings_Click);
+            this.applySettings.Click += new System.EventHandler(this.ApplySettings_Click);
             // 
             // processes
             // 
@@ -69,7 +69,7 @@
             this.processes.Name = "processes";
             this.processes.Size = new System.Drawing.Size(162, 160);
             this.processes.TabIndex = 0;
-            this.processes.SelectedIndexChanged += new System.EventHandler(this.processes_SelectedIndexChanged);
+            this.processes.SelectedIndexChanged += new System.EventHandler(this.Processes_SelectedIndexChanged);
             // 
             // addProcess
             // 
@@ -79,7 +79,7 @@
             this.addProcess.TabIndex = 3;
             this.addProcess.Text = "Add";
             this.addProcess.UseVisualStyleBackColor = true;
-            this.addProcess.Click += new System.EventHandler(this.addProcess_Click);
+            this.addProcess.Click += new System.EventHandler(this.AddProcess_Click);
             // 
             // removeProcess
             // 
@@ -89,7 +89,7 @@
             this.removeProcess.TabIndex = 4;
             this.removeProcess.Text = "Remove";
             this.removeProcess.UseVisualStyleBackColor = true;
-            this.removeProcess.Click += new System.EventHandler(this.removeProcess_Click);
+            this.removeProcess.Click += new System.EventHandler(this.RemoveProcess_Click);
             // 
             // groupBox1
             // 
@@ -159,7 +159,7 @@
             // 
             this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
             this.notifyIcon.Text = "limit-nvpstate";
-            this.notifyIcon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseClick);
+            this.notifyIcon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.NotifyIcon_MouseClick);
             // 
             // contextMenuStrip1
             // 
@@ -173,7 +173,7 @@
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
             this.exitToolStripMenuItem1.Size = new System.Drawing.Size(93, 22);
             this.exitToolStripMenuItem1.Text = "Exit";
-            this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
+            this.exitToolStripMenuItem1.Click += new System.EventHandler(this.ExitToolStripMenuItem1_Click);
             // 
             // fileToolStripMenuItem
             // 
@@ -190,14 +190,14 @@
             this.startMinimizedToolStripMenuItem.Name = "startMinimizedToolStripMenuItem";
             this.startMinimizedToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.startMinimizedToolStripMenuItem.Text = "Start Minimized";
-            this.startMinimizedToolStripMenuItem.Click += new System.EventHandler(this.startMinimizedToolStripMenuItem_Click);
+            this.startMinimizedToolStripMenuItem.Click += new System.EventHandler(this.StartMinimizedToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -242,9 +242,9 @@
             this.Name = "limitnvpstate";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "limit-nvpstate v0.2.1";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.limitnvpstate_FormClosing);
-            this.Load += new System.EventHandler(this.limitnvpstate_Load);
-            this.SizeChanged += new System.EventHandler(this.limitnvpstate_SizeChanged);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Limitnvpstate_FormClosing);
+            this.Load += new System.EventHandler(this.Limitnvpstate_Load);
+            this.SizeChanged += new System.EventHandler(this.Limitnvpstate_SizeChanged);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
