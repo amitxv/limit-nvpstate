@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -8,7 +9,7 @@ using System.Windows.Forms;
 
 namespace limit_nvpstate {
     public partial class limitnvpstate : Form {
-        private readonly Process inspector = new Process();
+        private readonly Process _inspector = new Process();
 
         public limitnvpstate() {
             InitializeComponent();
@@ -67,10 +68,10 @@ namespace limit_nvpstate {
         }
 
         private void LimitPstate(bool enabled) {
-            inspector.StartInfo.Arguments = enabled
+            _inspector.StartInfo.Arguments = enabled
                 ? $"-setPStateLimit:{gpuIndex.SelectedIndex},{pstateLimit.SelectedItem.ToString().Replace("P", "")}"
                 : $"-setPStateLimit:{gpuIndex.SelectedIndex},0";
-            _ = inspector.Start();
+            _ = _inspector.Start();
         }
 
         private void ApplySettings_Click(object sender, EventArgs e) {
@@ -101,8 +102,8 @@ namespace limit_nvpstate {
             }
 
             // configure inspector launch settings
-            inspector.StartInfo.FileName = "nvidiaInspector.exe";
-            inspector.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            _inspector.StartInfo.FileName = "nvidiaInspector.exe";
+            _inspector.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
 
             // configure event handler
             ManagementEventWatcher startWatch = new ManagementEventWatcher(new WqlEventQuery("SELECT * FROM Win32_ProcessStartTrace"));
