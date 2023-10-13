@@ -1,5 +1,5 @@
-﻿namespace limit_nvpstate {
-    partial class limitnvpstate {
+﻿namespace Limit_nvpstate {
+    partial class Limitnvpstate {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -24,7 +24,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(limitnvpstate));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Limitnvpstate));
             this.applySettings = new System.Windows.Forms.Button();
             this.processes = new System.Windows.Forms.ListBox();
             this.addProcess = new System.Windows.Forms.Button();

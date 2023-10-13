@@ -7,18 +7,18 @@ using System.Linq;
 using System.Management;
 using System.Windows.Forms;
 
-namespace limit_nvpstate {
-    public partial class limitnvpstate : Form {
+namespace Limit_nvpstate {
+    public partial class Limitnvpstate : Form {
         private readonly Process _inspector = new Process();
 
-        public limitnvpstate() {
+        public Limitnvpstate() {
             InitializeComponent();
         }
 
         private void AddProcess_Click(object sender, EventArgs e) {
-            OpenFileDialog ofd = new OpenFileDialog();
+            var ofd = new OpenFileDialog();
             if (ofd.ShowDialog() == DialogResult.OK) {
-                string fileName = Path.GetFileName(ofd.FileName).Replace(".exe", "");
+                var fileName = Path.GetFileName(ofd.FileName).Replace(".exe", "");
                 _ = processes.Items.Add(fileName);
             }
         }
@@ -28,7 +28,7 @@ namespace limit_nvpstate {
         }
 
         private void EventHandler(object sender, EventArrivedEventArgs e) {
-            Process createdProcess = Process.GetProcessById((int)(uint)e.NewEvent.Properties["ProcessID"].Value);
+            var createdProcess = Process.GetProcessById((int)(uint)e.NewEvent.Properties["ProcessID"].Value);
 
             if (processes.Items.Contains(createdProcess.ProcessName)) {
                 LimitPstate(false);
@@ -38,7 +38,7 @@ namespace limit_nvpstate {
         }
 
         private void LoadSettings() {
-            using (RegistryKey config = Registry.CurrentUser.CreateSubKey("SOFTWARE\\limit-nvpstate")) {
+            using (var config = Registry.CurrentUser.CreateSubKey("SOFTWARE\\limit-nvpstate")) {
 
                 if (config.GetValue("LimitPState") == null) {
                     config.SetValue("LimitPState", "1", RegistryValueKind.String);
@@ -61,7 +61,7 @@ namespace limit_nvpstate {
                 startMinimizedToolStripMenuItem.Checked = Convert.ToBoolean(config.GetValue("StartMinimized"));
 
                 processes.Items.Clear();
-                foreach (string i in (string[])config.GetValue("ProcessList")) {
+                foreach (var i in (string[])config.GetValue("ProcessList")) {
                     _ = processes.Items.Add(i);
                 }
             }
@@ -75,7 +75,7 @@ namespace limit_nvpstate {
         }
 
         private void ApplySettings_Click(object sender, EventArgs e) {
-            using (RegistryKey config = Registry.CurrentUser.CreateSubKey("SOFTWARE\\limit-nvpstate")) {
+            using (var config = Registry.CurrentUser.CreateSubKey("SOFTWARE\\limit-nvpstate")) {
                 config.SetValue("LimitPState", pstateLimit.SelectedIndex, RegistryValueKind.String);
                 config.SetValue("IndexOfGPU", gpuIndex.SelectedIndex, RegistryValueKind.String);
                 config.SetValue("ProcessList", processes.Items.OfType<string>().ToArray(), RegistryValueKind.MultiString);
@@ -85,13 +85,13 @@ namespace limit_nvpstate {
 
         private void Limitnvpstate_Load(object sender, EventArgs e) {
             // create a new instance of the ManagementObjectSearcher class
-            ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_VideoController");
+            var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_VideoController");
 
             // call the Get method of the ManagementObjectSearcher class to retrieve a collection of GPU objects
-            ManagementObjectCollection gpuCollection = searcher.Get();
+            var gpuCollection = searcher.Get();
 
             // iterate through the collection of GPU objects
-            foreach (ManagementObject gpu in gpuCollection.Cast<ManagementObject>()) {
+            foreach (var gpu in gpuCollection.Cast<ManagementObject>()) {
                 _ = gpuIndex.Items.Add($"{gpu["Name"]}");
             }
 
@@ -106,7 +106,7 @@ namespace limit_nvpstate {
             _inspector.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
 
             // configure event handler
-            ManagementEventWatcher startWatch = new ManagementEventWatcher(new WqlEventQuery("SELECT * FROM Win32_ProcessStartTrace"));
+            var startWatch = new ManagementEventWatcher(new WqlEventQuery("SELECT * FROM Win32_ProcessStartTrace"));
             startWatch.EventArrived += new EventArrivedEventHandler(EventHandler);
             startWatch.Start();
 
@@ -145,7 +145,7 @@ namespace limit_nvpstate {
         }
 
         private void StartMinimizedToolStripMenuItem_Click(object sender, EventArgs e) {
-            using (RegistryKey config = Registry.CurrentUser.CreateSubKey("SOFTWARE\\limit-nvpstate")) {
+            using (var config = Registry.CurrentUser.CreateSubKey("SOFTWARE\\limit-nvpstate")) {
                 config.SetValue("StartMinimized", Convert.ToString(startMinimizedToolStripMenuItem.Checked), RegistryValueKind.String);
             }
         }

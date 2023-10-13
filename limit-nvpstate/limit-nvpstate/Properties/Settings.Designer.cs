@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace limit_nvpstate.Properties {
+namespace Limit_nvpstate.Properties {
 
 
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
