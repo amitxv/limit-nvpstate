@@ -16,8 +16,7 @@ jobs:
         uses: microsoft/setup-msbuild@v1
 
       - name: Build executable
-        run: |
-          MSBuild.exe .\limit-nvpstate\limit-nvpstate.sln -p:Configuration=Release -p:Platform=x64
+        run: MSBuild.exe .\limit-nvpstate\limit-nvpstate.sln -p:Configuration=Release -p:Platform=x64
 
       - name: Create folder structure
         run: |
