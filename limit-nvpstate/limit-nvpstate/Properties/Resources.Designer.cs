@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Limit_nvpstate.Properties {
+namespace LimitNvpstate.Properties {
     using System;
     
     

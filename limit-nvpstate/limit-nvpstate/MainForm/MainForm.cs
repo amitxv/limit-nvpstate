@@ -7,7 +7,7 @@ using System.Linq;
 using System.Management;
 using System.Windows.Forms;
 
-namespace Limit_nvpstate {
+namespace LimitNvpstate {
     public partial class Limitnvpstate : Form {
         private readonly Process _inspector = new Process();
 
@@ -15,7 +15,7 @@ namespace Limit_nvpstate {
             InitializeComponent();
         }
 
-        private void AddProcess_Click(object sender, EventArgs e) {
+        private void AddProcessClick(object sender, EventArgs e) {
             var ofd = new OpenFileDialog();
             if (ofd.ShowDialog() == DialogResult.OK) {
                 var fileName = Path.GetFileName(ofd.FileName).Replace(".exe", "");
@@ -23,7 +23,7 @@ namespace Limit_nvpstate {
             }
         }
 
-        private void RemoveProcess_Click(object sender, EventArgs e) {
+        private void RemoveProcessClick(object sender, EventArgs e) {
             processes.Items.RemoveAt(processes.SelectedIndex);
         }
 
@@ -74,7 +74,7 @@ namespace Limit_nvpstate {
             _ = _inspector.Start();
         }
 
-        private void ApplySettings_Click(object sender, EventArgs e) {
+        private void ApplySettingsClick(object sender, EventArgs e) {
             using (var config = Registry.CurrentUser.CreateSubKey("SOFTWARE\\limit-nvpstate")) {
                 config.SetValue("LimitPState", pstateLimit.SelectedIndex, RegistryValueKind.String);
                 config.SetValue("IndexOfGPU", gpuIndex.SelectedIndex, RegistryValueKind.String);
@@ -83,7 +83,7 @@ namespace Limit_nvpstate {
             LoadSettings();
         }
 
-        private void Limitnvpstate_Load(object sender, EventArgs e) {
+        private void LimitnvpstateLoad(object sender, EventArgs e) {
             // create a new instance of the ManagementObjectSearcher class
             var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_VideoController");
 
@@ -97,7 +97,7 @@ namespace Limit_nvpstate {
 
             if (!File.Exists("nvidiaInspector.exe")) {
                 _ = MessageBox.Show("Inspector not found in current directory", "limit-nvpstate", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                FormClosing -= Limitnvpstate_FormClosing;
+                FormClosing -= LimitnvpstateFormClosing;
                 Close();
             }
 
@@ -121,11 +121,11 @@ namespace Limit_nvpstate {
             removeProcess.Enabled = false; // disable remove button by default, is re-enabled when item in list is selected
         }
 
-        private void ExitToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void ExitToolStripMenuItemClick(object sender, EventArgs e) {
             Close();
         }
 
-        private void Limitnvpstate_SizeChanged(object sender, EventArgs e) {
+        private void LimitnvpstateSizeChanged(object sender, EventArgs e) {
             if (WindowState == FormWindowState.Minimized && Screen.GetWorkingArea(this).Contains(Cursor.Position)) {
                 ShowInTaskbar = false;
                 notifyIcon.Visible = true;
@@ -133,7 +133,7 @@ namespace Limit_nvpstate {
             }
         }
 
-        private void NotifyIcon_MouseClick(object sender, MouseEventArgs e) {
+        private void NotifyIconMouseClick(object sender, MouseEventArgs e) {
             if (e.Button == MouseButtons.Left) {
                 WindowState = FormWindowState.Normal;
                 ShowInTaskbar = true;
@@ -144,21 +144,21 @@ namespace Limit_nvpstate {
             }
         }
 
-        private void StartMinimizedToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void StartMinimizedToolStripMenuItemClick(object sender, EventArgs e) {
             using (var config = Registry.CurrentUser.CreateSubKey("SOFTWARE\\limit-nvpstate")) {
                 config.SetValue("StartMinimized", Convert.ToString(startMinimizedToolStripMenuItem.Checked), RegistryValueKind.String);
             }
         }
 
-        private void Limitnvpstate_FormClosing(object sender, FormClosingEventArgs e) {
+        private void LimitnvpstateFormClosing(object sender, FormClosingEventArgs e) {
             LimitPstate(false);
         }
 
-        private void ExitToolStripMenuItem1_Click(object sender, EventArgs e) {
+        private void ExitToolStripMenuItem1Click(object sender, EventArgs e) {
             Close();
         }
 
-        private void Processes_SelectedIndexChanged(object sender, EventArgs e) {
+        private void ProcessesSelectedIndexChanged(object sender, EventArgs e) {
             // only enable the remove process button if a index is selected
             removeProcess.Enabled = processes.SelectedIndex > -1;
         }

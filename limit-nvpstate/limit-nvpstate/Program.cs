@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Limit_nvpstate {
+namespace LimitNvpstate {
     internal static class Program {
         [STAThread]
         private static void Main() {
