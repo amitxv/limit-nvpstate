@@ -22,7 +22,7 @@ jobs:
         run: |
           mkdir release\limit-nvpstate
           move .\limit-nvpstate\limit-nvpstate\bin\x64\Release\limit-nvpstate.exe release\limit-nvpstate
-          move nvidiaInspector.exe release\limit-nvpstate
+          move .\limit-nvpstate\limit-nvpstate\bin\x64\Release\nvidiaInspector.exe release\limit-nvpstate
 
       - name: Zip release
         run: Compress-Archive -Path release\limit-nvpstate -DestinationPath limit-nvpstate.zip
