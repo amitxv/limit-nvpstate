@@ -8,10 +8,10 @@ using System.Management;
 using System.Windows.Forms;
 
 namespace LimitNvpstate {
-    public partial class Limitnvpstate : Form {
+    public partial class LimitNvpstate : Form {
         private readonly Process _inspector = new Process();
 
-        public Limitnvpstate() {
+        public LimitNvpstate() {
             InitializeComponent();
         }
 
@@ -83,7 +83,7 @@ namespace LimitNvpstate {
             LoadSettings();
         }
 
-        private void LimitnvpstateLoad(object sender, EventArgs e) {
+        private void LimitNvpstateLoad(object sender, EventArgs e) {
             // create a new instance of the ManagementObjectSearcher class
             var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_VideoController");
 
@@ -152,10 +152,6 @@ namespace LimitNvpstate {
 
         private void LimitnvpstateFormClosing(object sender, FormClosingEventArgs e) {
             LimitPstate(false);
-        }
-
-        private void ExitToolStripMenuItem1Click(object sender, EventArgs e) {
-            Close();
         }
 
         private void ProcessesSelectedIndexChanged(object sender, EventArgs e) {

@@ -7,7 +7,7 @@ namespace LimitNvpstate {
         private static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Limitnvpstate());
+            Application.Run(new LimitNvpstate());
         }
     }
 }

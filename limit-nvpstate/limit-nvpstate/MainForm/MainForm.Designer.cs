@@ -1,5 +1,5 @@
 ﻿namespace LimitNvpstate {
-    partial class Limitnvpstate {
+    partial class LimitNvpstate {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -24,7 +24,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Limitnvpstate));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LimitNvpstate));
             this.applySettings = new System.Windows.Forms.Button();
             this.processes = new System.Windows.Forms.ListBox();
             this.addProcess = new System.Windows.Forms.Button();
@@ -168,13 +168,6 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(94, 26);
             // 
-            // exitToolStripMenuItem1
-            // 
-            this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(93, 22);
-            this.exitToolStripMenuItem1.Text = "Exit";
-            this.exitToolStripMenuItem1.Click += new System.EventHandler(this.ExitToolStripMenuItem1Click);
-            // 
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -188,14 +181,14 @@
             // 
             this.startMinimizedToolStripMenuItem.CheckOnClick = true;
             this.startMinimizedToolStripMenuItem.Name = "startMinimizedToolStripMenuItem";
-            this.startMinimizedToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.startMinimizedToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.startMinimizedToolStripMenuItem.Text = "Start Minimized";
             this.startMinimizedToolStripMenuItem.Click += new System.EventHandler(this.StartMinimizedToolStripMenuItemClick);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItemClick);
             // 
@@ -210,7 +203,7 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aboutToolStripMenuItem.Text = "About";
             // 
             // menuStrip1
@@ -224,7 +217,7 @@
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // limitnvpstate
+            // Limitnvpstate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -239,11 +232,11 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
-            this.Name = "limitnvpstate";
+            this.Name = "Limitnvpstate";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "limit-nvpstate v0.2.1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LimitnvpstateFormClosing);
-            this.Load += new System.EventHandler(this.LimitnvpstateLoad);
+            this.Load += new System.EventHandler(this.LimitNvpstateLoad);
             this.SizeChanged += new System.EventHandler(this.LimitnvpstateSizeChanged);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
