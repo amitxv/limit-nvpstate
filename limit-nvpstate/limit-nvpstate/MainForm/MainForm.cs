@@ -158,5 +158,9 @@ namespace LimitNvpstate {
             // only enable the remove process button if a index is selected
             removeProcess.Enabled = processes.SelectedIndex > -1;
         }
+
+        private void DonateToolStripMenuItem_Click(object sender, EventArgs e) {
+            _ = Process.Start("https://www.buymeacoffee.com/amitxv");
+        }
     }
 }
