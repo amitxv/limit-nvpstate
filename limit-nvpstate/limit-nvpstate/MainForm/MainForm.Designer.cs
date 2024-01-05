@@ -248,7 +248,7 @@
             this.MaximizeBox = false;
             this.Name = "LimitNvpstate";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "limit-nvpstate v0.2.1";
+            this.Text = "limit-nvpstate v0.2.2";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LimitnvpstateFormClosing);
             this.Load += new System.EventHandler(this.LimitNvpstateLoad);
             this.SizeChanged += new System.EventHandler(this.LimitnvpstateSizeChanged);
