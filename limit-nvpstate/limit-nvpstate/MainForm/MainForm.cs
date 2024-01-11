@@ -13,6 +13,8 @@ namespace LimitNvpstate {
 
         public LimitNvpstate() {
             InitializeComponent();
+
+            Text = $"limit-nvpstate v{Program.Version.Major}.{Program.Version.Minor}.{Program.Version.Build}";
         }
 
         private void AddProcessClick(object sender, EventArgs e) {
