@@ -1,5 +1,7 @@
 # limit-nvpstate
 
+[![Downloads](https://img.shields.io/github/downloads/amitxv/limit-nvpstate/total.svg)](https://github.com/amitxv/limit-nvpstate/releases)
+
 [![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/amitxv)
 
 <img src="./img/program-screenshot.png">
