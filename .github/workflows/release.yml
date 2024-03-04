@@ -28,17 +28,11 @@ jobs:
       - name: Set up MSVC environment
         uses: microsoft/setup-msbuild@v2
 
-      - name: Build executable
+      - name: Build
         run: MSBuild.exe .\limit-nvpstate\limit-nvpstate.sln -p:Configuration=Release -p:Platform=x64
 
-      - name: Create folder structure
-        run: |
-          mkdir release\limit-nvpstate
-          move .\limit-nvpstate\limit-nvpstate\bin\x64\Release\limit-nvpstate.exe release\limit-nvpstate
-          move .\limit-nvpstate\limit-nvpstate\bin\x64\Release\nvidiaInspector.exe release\limit-nvpstate
-
       - name: Zip release
-        run: Compress-Archive -Path release\limit-nvpstate -DestinationPath limit-nvpstate.zip
+        run: Compress-Archive -Path build\limit-nvpstate -DestinationPath limit-nvpstate.zip
 
       - name: Create release
         uses: ncipollo/release-action@v1
