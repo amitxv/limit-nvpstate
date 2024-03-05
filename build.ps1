@@ -3,7 +3,7 @@ function main() {
     MSBuild.exe .\limit-nvpstate\limit-nvpstate.sln -p:Configuration=Release -p:Platform=x64
 
     if (Test-Path "build") {
-        Remove-Item -Path "build" -Recurse
+        Remove-Item -Path $path -Recurse
     }
 
     New-Item -ItemType Directory -Path "build\limit-nvpstate"
