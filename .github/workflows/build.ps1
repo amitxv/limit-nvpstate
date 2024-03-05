@@ -6,7 +6,7 @@ function main() {
         Remove-Item -Path "build" -Recurse
     }
 
-    New-Item -ItemType Directory -Path "build\limit-nvpstate"
+    New-Item -ItemType Directory -Path build\limit-nvpstate
     Move-Item .\limit-nvpstate\limit-nvpstate\bin\x64\Release\limit-nvpstate.exe build\limit-nvpstate
     Move-Item .\limit-nvpstate\limit-nvpstate\bin\x64\Release\nvidiaInspector.exe build\limit-nvpstate
 
