@@ -10,8 +10,8 @@ function main() {
     New-Item -ItemType Directory -Path ".\build\limit-nvpstate\"
 
     # create final package
-    Move-Item ".\limit-nvpstate\limit-nvpstate\bin\x64\Release\limit-nvpstate.exe" ".\build\limit-nvpstate\"
-    Move-Item ".\limit-nvpstate\limit-nvpstate\bin\x64\Release\nvidiaInspector.exe" ".\build\limit-nvpstate\"
+    Copy-Item ".\limit-nvpstate\limit-nvpstate\bin\x64\Release\limit-nvpstate.exe" ".\build\limit-nvpstate\"
+    Copy-Item ".\limit-nvpstate\limit-nvpstate\bin\x64\Release\nvidiaInspector.exe" ".\build\limit-nvpstate\"
 
     return 0
 }
