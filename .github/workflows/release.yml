@@ -28,6 +28,9 @@ jobs:
       - name: Set up MSVC environment
         uses: microsoft/setup-msbuild@v2
 
+      - name: Get project dependencies
+        run: .\get-dependencies.ps1
+
       - name: Build
         run: MSBuild.exe .\limit-nvpstate\limit-nvpstate.sln -p:Configuration=Release -p:Platform=x64
 
