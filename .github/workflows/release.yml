@@ -32,7 +32,7 @@ jobs:
         run: .\get-dependencies.ps1
 
       - name: Build
-        run: MSBuild.exe .\limit-nvpstate\limit-nvpstate.sln -p:Configuration=Release -p:Platform=x64
+        run: .\build.ps1
 
       - name: Zip release
         run: Compress-Archive -Path build\limit-nvpstate -DestinationPath limit-nvpstate.zip

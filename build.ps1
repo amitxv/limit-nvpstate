@@ -13,6 +13,8 @@ function main() {
         Remove-Item -Path ".\build\" -Recurse -Force
     }
 
+    mkdir ".\build\"
+
     # create folder structure
     mkdir ".\build\limit-nvpstate\"
 
