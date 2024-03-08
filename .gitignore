@@ -478,3 +478,4 @@ $RECYCLE.BIN/
 
 build/
 tmp/
+limit-nvpstate/limit-nvpstate/nvidiaInspector.exe
